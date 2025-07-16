@@ -36,7 +36,7 @@ setopt inc_append_history # save history entries as soon as they are entered
 setopt share_history # share history between different instances
 setopt correct_all # autocorrect commands
 setopt interactive_comments # allow comments in interactive shells
-setopt ignoreeof # Don't exit on accidental Ctrl-D EOF
+bindkey -r "^S" # unbind Ctrl + r for fwd-i-search
 
 # Improve autocompletion style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
