@@ -1,3 +1,7 @@
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 plugins=(
   git
   fzf-tab
@@ -32,7 +36,7 @@ setopt inc_append_history # save history entries as soon as they are entered
 setopt share_history # share history between different instances
 setopt correct_all # autocorrect commands
 setopt interactive_comments # allow comments in interactive shells
- 
+
 # Improve autocompletion style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colorize filenames
@@ -40,7 +44,7 @@ zstyle ':completion:*' menu no # disable menu completion for fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath' # preview directory contents with cd
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath' # preview directory contents with zoxide
 zstyle ':fzf-tab:*' use-fzf-default-opts yes # use FZF_DEFAULT_OPTS for fzf-tab
- 
+
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
  
@@ -55,3 +59,15 @@ if [[ -o interactive ]]; then fastfetch; fi
 if [[ -x $(command -v fzf) ]]; then eval "$(fzf --zsh)"; fi
 
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/home/lilamaris/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
