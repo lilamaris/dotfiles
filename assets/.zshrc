@@ -36,6 +36,7 @@ setopt inc_append_history # save history entries as soon as they are entered
 setopt share_history # share history between different instances
 setopt correct_all # autocorrect commands
 setopt interactive_comments # allow comments in interactive shells
+setopt ignoreeof # Don't exit on accidental Ctrl-D EOF
 
 # Improve autocompletion style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
@@ -54,7 +55,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#bfc7d5,header:#ff9e80,info:#82aaff,pointer:#a5adce \
 --color=marker:#89ddff,fg+:#eeffff,prompt:#c792ea,hl+:#ff9e80 \
 --color=selected-bg:#424762"
- 
+
 if [[ -o interactive ]]; then fastfetch; fi
 if [[ -x $(command -v fzf) ]]; then eval "$(fzf --zsh)"; fi
 
