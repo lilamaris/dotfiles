@@ -1,32 +1,33 @@
 import QtQuick
 
 QtObject {
-    readonly property string name: "Default"
+    property string name: "Default"
+    property bool isDefault: false
 
-    readonly property DarkBase dark: DarkBase {}
-    readonly property LightBase light: LightBase {}
+    property DarkBase dark: DarkBase {}
+    property LightBase light: LightBase {}
 
-    readonly property color primary: ""
-    readonly property color secondary: ""
-    readonly property color accent: ""
+    property color primary: "#000000"
+    property color secondary: "#000000"
+    property color accent: "#000000"
 
-    readonly property color red: "#FFADAD"
-    readonly property color orange: "#FFD6A5"
-    readonly property color yellow: "#FDFFB6"
-    readonly property color green: "#CAFFBF"
-    readonly property color blue: "#9BF6FF"
+    property color red: "#FFADAD"
+    property color orange: "#FFD6A5"
+    property color yellow: "#FDFFB6"
+    property color green: "#CAFFBF"
+    property color blue: "#9BF6FF"
 
     component DarkBase: QtObject {
-        readonly property color block: "#1D232A"
-        readonly property color surface: "#191E24"
-        readonly property color field: "#15191E"
-        readonly property color content: "#ECF9FF"
+        property color block: "#1D232A"
+        property color surface: "#191E24"
+        property color field: "#15191E"
+        property color content: "#ECF9FF"
     }
 
     component LightBase: QtObject {
-        readonly property color surface: "#FFFFFF"
-        readonly property color block: "#F8F8F8"
-        readonly property color field: "#EEEEEE"
-        readonly property color content: "#18181B"
+        property color surface: "#FFFFFF"
+        property color block: "#F8F8F8"
+        property color field: "#EEEEEE"
+        property color content: "#18181B"
     }
 }
