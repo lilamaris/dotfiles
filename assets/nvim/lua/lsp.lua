@@ -1,6 +1,7 @@
 vim.lsp.enable {
   'lua_ls',
   'qmlls',
+  "rust_analyzer",
   'ts_ls',
   'clangd',
 }
