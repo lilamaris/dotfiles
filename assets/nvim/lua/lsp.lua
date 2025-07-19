@@ -2,6 +2,8 @@ vim.lsp.enable {
   'lua_ls',
   'qmlls',
   "rust_analyzer",
+  "svelte",
+  "tailwindcss",
   'ts_ls',
   'clangd',
 }
