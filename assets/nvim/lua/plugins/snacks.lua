@@ -6,7 +6,6 @@ return {
     },
     config = function()
       local snacks = require('snacks')
-      local ascii = require('ascii')
 
       snacks.setup(
         {
