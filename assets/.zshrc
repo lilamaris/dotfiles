@@ -7,7 +7,6 @@ plugins=(
   fzf-tab
   zsh-autosuggestions
   fast-syntax-highlighting
-  zsh-syntax-highlighting
 )
 
 # Save history so we get auto suggestions
