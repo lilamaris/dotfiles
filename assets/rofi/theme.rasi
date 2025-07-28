@@ -23,6 +23,7 @@ window {
     width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
+    padding:                     0px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -42,7 +43,7 @@ mainbox {
 
 listbox {
     spacing:                     20px;
-    // padding:                     20px;
+    padding:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
     border:                      2px 0px 0px 0px;
@@ -104,7 +105,7 @@ button {
     cursor:                      pointer;
 }
 button selected {
-    background-color:            @selected;
+    background-color:            @selected-normal-background;
     text-color:                  @foreground;
 }
 

@@ -4,46 +4,43 @@
   "margin-top": 5,
   "modules-left": ["clock", "hyprland/workspaces"],
   "modules-center": [],
-  "modules-right": ["custom/weather", "group/volight","group/wifibt","custom/notification"],
+  "modules-right": [
+    "custom/weather",
+    "group/volight",
+    "group/wifibt",
+    "custom/notification",
+  ],
 
-  "group/volight":{
-      "orientation": "inherit",
-      "drawer": {
-        "transition-duration": 500,
-        "children-class": "not-power",
-        "transition-left-to-right": true,
-        "click-to-reveal": true
-      },
-      "modules": [
-        "custom/volight",
-        "pulseaudio",
-        "backlight"
-      ]
-    }, 
+  "group/volight": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": true,
+      "click-to-reveal": true,
+    },
+    "modules": ["custom/volight", "pulseaudio", "backlight"],
+  },
 
-  "group/wifibt":{
-      "orientation": "inherit",
-      "drawer": {
-        "transition-duration": 500,
-        "children-class": "not-power",
-        "transition-left-to-right": false,
-        "click-to-reveal": true
-      },
-      "modules": [
-        "custom/wifibt",
-        "bluetooth",
-        "network"
-      ]
-    }, 
+  "group/wifibt": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+      "click-to-reveal": true,
+    },
+    "modules": ["custom/wifibt", "bluetooth", "network"],
+  },
 
   "height": 20,
 
-  "custom/wifibt":{
-    "format" : " 󰤨"
+  "custom/wifibt": {
+    "format": " 󰤨",
   },
 
-  "custom/volight":{
-    "format" : "󰕾 󰃠"
+  "custom/volight": {
+    "format": "󰕾 󰃠",
   },
 
   "custom/notification": {
@@ -57,20 +54,20 @@
       "inhibited-notification": "<span foreground='red'><sup></sup></span>",
       "inhibited-none": "",
       "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
+      "dnd-inhibited-none": "",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
-    "escape": true
+    "escape": true,
   },
 
   "custom/launcher": {
     "format": "",
     "on-click": "bash /home/$USER/.config/waybar/scripts/app_launcher.sh",
-    "tooltip-format": "Launch your favorite apps"
+    "tooltip-format": "Launch your favorite apps",
   },
 
   "custom/pacman": {
@@ -79,7 +76,7 @@
     "exec": "checkupdates | wc -l",
     "on-click": "update-system",
     "signal": 8,
-    "tooltip-format": "{} updates available"
+    "tooltip-format": "{} updates available",
   },
 
   "custom/media": {
@@ -92,12 +89,12 @@
     "smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous",
-    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
   },
 
   "clock": {
     "format": "󰥔  {:%I:%M %p}",
-    "tooltip-format": "{:%A | %d-%m-%Y}"
+    "tooltip-format": "{:%A | %d-%m-%Y}",
   },
 
   "pulseaudio": {
@@ -114,13 +111,13 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["󰖀", "󰕾"]
+      "default": ["󰖀", "󰕾"],
     },
-    "tooltip-format": "Volume: {volume}%"
+    "tooltip-format": "Volume: {volume}%",
   },
 
   "network": {
-    "interface": "wlo1",
+    "interface": "wlp7s0",
     "format": "{ifname}",
     "format-wifi": "{icon}  {essid}",
     "format-ethernet": "󰈀  {ipaddr}/{cidr}",
@@ -128,16 +125,16 @@
     "max-length": 50,
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format": "Connected to {essid}",
-    "on-click" : "kitty -e ~/.config/waybar/scripts/nmtui.sh"
+    "on-click": "kitty -e ~/.config/waybar/scripts/nmtui.sh",
   },
 
   "bluetooth": {
     "format": "",
     "format-on": "󰂲  Disconnected",
     "format-disabled": "Disabled",
-	  "format-connected": " {device_alias}",
-	  "format-connected-battery": "󰂱 {device_alias}",
-    "on-click": "blueberry"
+    "format-connected": " {device_alias}",
+    "format-connected-battery": "󰂱 {device_alias}",
+    "on-click": "blueberry",
   },
 
   "hyprland/workspaces": {
@@ -153,18 +150,18 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "10": "10"
+      "10": "10",
     },
     "persistent-workspaces": {
-      "*": 5 // 5 workspaces by default on every monitor
+      "*": 5, // 5 workspaces by default on every monitor
     },
-    "sort-by-number": true
+    "sort-by-number": true,
   },
 
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}   {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"]
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
   },
 
   "custom/weather": {
@@ -172,12 +169,12 @@
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
-    "interval": 3600
+    "interval": 3600,
   },
   "hyprland/window": {
     "format": "{class}",
     "separate-outputs": true,
     "icon": true,
-    "icon-size": 18
-}
+    "icon-size": 18,
+  },
 }
