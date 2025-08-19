@@ -126,7 +126,7 @@ disabled = false
 
 [kubernetes]
 style = "fg:#ffffff bg:#326ce5"
-format = '[ on ﴱ ($user on )($cluster in )$context \($namespace\) ]($style)'
+format = '[ on  ($user on )($cluster in )$context \($namespace\) ]($style)'
 disabled = false
 
 [gcloud]
@@ -155,13 +155,13 @@ format = '[ $symbol ($version) ]($style)'
 disabled = true
 
 [nodejs]
-symbol = ""
+symbol = "󰎙"
 style = "fg:#ffffff bg:#5fa04e"
 format = '[ $symbol ($version) ]($style)'
 disabled = false
 
 [package]
-symbol = ""
+symbol = "󰏗"
 style = "fg:#ffffff bg:#cb3837"
 format = '[ $symbol ($version) ]($style)'
 disabled = false
