@@ -1,0 +1,29 @@
+{
+  "checksum": "4d2d8ed013683f682d1b1d6e42cf592f",
+  "wallpaper": "/home/lilamaris/dotfiles/assets/fastfetch/logos/logo1.jpg",
+  "alpha": "100",
+  "special": {
+    "background": "#161d33",
+    "foreground": "#c4c6cc",
+    "cursor": "#c4c6cc"
+  },
+  "colors": {
+    "color0": "#161d33",
+    "color1": "#6D91CB",
+    "color2": "#C5A8B5",
+    "color3": "#95A3D2",
+    "color4": "#B2B5D7",
+    "color5": "#CEB8CA",
+    "color6": "#E6B2CC",
+    "color7": "#c4c6cc",
+    "color8": "#656b7b",
+    "color9": "#6D91CB",
+    "color10": "#C5A8B5",
+    "color11": "#95A3D2",
+    "color12": "#B2B5D7",
+    "color13": "#CEB8CA",
+    "color14": "#E6B2CC",
+    "color15": "#c4c6cc"
+  }
+}
+
