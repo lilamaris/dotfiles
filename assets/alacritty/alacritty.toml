@@ -4,7 +4,7 @@ import = [
 ]
 
 [terminal.shell]
-program = "/usr/bin/zsh"
+program = "/usr/bin/tmux"
 
 [window]
 dynamic_padding = true
