@@ -152,7 +152,7 @@ disabled = false
 symbol = ""
 style = "fg:#ffffff bg:#000080"
 format = '[ $symbol ($version) ]($style)'
-disabled = false
+disabled = true
 
 [nodejs]
 symbol = ""
@@ -170,7 +170,7 @@ disabled = false
 symbol = ''
 style = "fg:#ffffff bg:#4F5B93"
 format = '[ $symbol ($version) ]($style)'
-disabled = false
+disabled = true
 
 [python]
 symbol = ''
