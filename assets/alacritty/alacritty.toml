@@ -5,7 +5,7 @@ import = [
 
 [terminal.shell]
 program = "/usr/bin/tmux"
-args = ["a"]
+args = ["new-session", "-A", "-s", "base"]
 
 [window]
 dynamic_padding = true
