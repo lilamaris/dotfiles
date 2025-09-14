@@ -4,6 +4,7 @@ vim.o.fileencoding = 'utf-8'
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.swapfile = false
 vim.opt.mouse = ''
 vim.opt.showmode = false
 vim.schedule(function()
