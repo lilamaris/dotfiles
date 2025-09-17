@@ -1,11 +1,8 @@
 require('lazy').setup({
   spec = {
-    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = "cyberdream" } },
+    { "folke/lazy.nvim", version = false },
+    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = "tokyonight" }, version = false },
     { import = 'plugins' },
-  },
-}, {
-  ui = {
-    icons = {},
   },
 })
 
