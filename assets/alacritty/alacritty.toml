@@ -13,10 +13,5 @@ padding = { x = 30, y = 15}
 decorations = "Transparent"
 opacity = 0.8
 
-[font]
-normal = { family = "0xProto Nerd Font", style = "Regular" }
-bold = { family = "0xProto Nerd Font", style = "Bold" }
-italic = { family = "0xProto Nerd Font", style = "Italic" }
-
 [mouse]
 hide_when_typing = true
