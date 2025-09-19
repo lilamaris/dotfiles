@@ -1,7 +1,5 @@
 [general]
-import = [
-  "~/.cache/wal/colors-alacritty.toml"
-]
+import = ["~/.cache/wal/colors-alacritty.toml"]
 
 [terminal.shell]
 program = "/usr/bin/tmux"
@@ -9,9 +7,9 @@ args = ["new-session", "-A", "-s", "base"]
 
 [window]
 dynamic_padding = true
-padding = { x = 30, y = 15}
+padding = { x = 30, y = 15 }
 decorations = "Transparent"
-opacity = 0.8
+opacity = 0.3
 
 [mouse]
 hide_when_typing = true
