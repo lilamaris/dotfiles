@@ -3,8 +3,6 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
-vim.loader.enable();
-
 -- [[ Setting options ]]
 require 'options'
 
