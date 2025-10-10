@@ -1,6 +1,6 @@
 local options = {
   backup = false,
-  fileencoding = "utf-8",
+  fileencoding = 'utf-8',
   hidden = true,
   ignorecase = true,
   showmode = false,
@@ -8,11 +8,11 @@ local options = {
   smartindent = true,
   splitbelow = true,
   splitright = true,
-  splitkeep = "screen",
+  splitkeep = 'screen',
   scrolloff = 10,
   signcolumn = 'yes',
   breakindent = true,
-  swapfile = true,
+  swapfile = false,
   timeoutlen = 500,
   undofile = true,
   updatetime = 100,
@@ -21,10 +21,10 @@ local options = {
   shiftwidth = 2,
   tabstop = 2,
   cursorline = true,
-  fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " },
+  fillchars = { eob = ' ', fold = ' ', foldopen = '', foldsep = ' ', foldclose = '', lastline = ' ' },
   list = false,
   listchars = { tab = '» ', trail = '·', nbsp = '␣' },
-  inccommand = "split"
+  inccommand = 'split',
 }
 
 for name, value in pairs(options) do
