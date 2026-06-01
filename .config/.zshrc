@@ -1,13 +1,50 @@
+[[ -o interactive ]] || return
+
+typeset -U path PATH
+
+path_prepend() {
+  [[ -d "$1" ]] && path=("$1" "$path[@]")
+}
+
+path_append() {
+  [[ -d "$1" ]] && path+=("$1")
+}
+
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/.cargo/bin"
+path_append "$HOME/.lmstudio/bin"
+
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+path_prepend "$PYENV_ROOT/bin"
+
+export PNPM_HOME="$HOME/.local/share/pnpm"
+path_prepend "$PNPM_HOME"
+
+unfunction path_prepend path_append
+
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init - --no-rehash zsh)"
+
+  if [[ " ${(f)$(pyenv commands --no-sh 2>/dev/null)} " == *" virtualenv-init "* ]]; then
+    eval "$(pyenv virtualenv-init - zsh)"
+  fi
+fi
 
 plugins=(
   git
-  fzf-tab
-  zsh-autosuggestions
-  fast-syntax-highlighting
 )
+
+export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
+
+omz_plugin_available() {
+  [[ -d "$ZSH/custom/plugins/$1" || -d "$ZSH/plugins/$1" ]]
+}
+
+omz_plugin_available fzf-tab && plugins+=(fzf-tab)
+omz_plugin_available zsh-autosuggestions && plugins+=(zsh-autosuggestions)
+omz_plugin_available fast-syntax-highlighting && plugins+=(fast-syntax-highlighting)
+
+unfunction omz_plugin_available
 
 # Save history so we get auto suggestions
 HISTFILE=$HOME/.zsh_history # path to the history file
@@ -45,8 +82,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath' # preview dir
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath' # preview directory contents with zoxide
 zstyle ':fzf-tab:*' use-fzf-default-opts yes # use FZF_DEFAULT_OPTS for fzf-tab
 
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
+  source "$ZSH/oh-my-zsh.sh"
+elif command -v mv >/dev/null 2>&1; then
+  autoload -Uz compinit
+  compinit
+fi
  
 # Setup fuzzy finder
 export FZF_DEFAULT_OPTS=" \
@@ -55,19 +96,15 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#89ddff,fg+:#eeffff,prompt:#c792ea,hl+:#ff9e80 \
 --color=selected-bg:#424762"
 
-if [[ -o interactive ]]; then fastfetch; fi
-if [[ -x $(command -v fzf) ]]; then eval "$(fzf --zsh)"; fi
-
-eval "$(starship init zsh)"
-
-# pnpm
-export PNPM_HOME="/home/lilamaris/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+if [[ -t 0 && -t 1 ]]; then
+  command -v fastfetch >/dev/null 2>&1 && fastfetch
+  command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
+  command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ -r "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -r "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+
+# OpenClaw Completion
+[[ -r "$HOME/.openclaw/completions/openclaw.zsh" ]] && source "$HOME/.openclaw/completions/openclaw.zsh"
