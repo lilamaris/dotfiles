@@ -1,0 +1,8 @@
+[config.wallpaper]
+command = "awww img --transition-type center {{ image }}"
+set = true
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css"
+output_path = "~/.config/waybar/styles/colors.css"
+post_hook = "pkill -SIGUSR2 waybar"
