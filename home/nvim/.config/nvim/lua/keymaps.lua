@@ -21,8 +21,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Autocmd group for the diagnostic autocmds below (name is arbitrary; lets them be cleared/re-registered as one)
 local group = vim.api.nvim_create_augroup('OoO', {})
 
+-- Helper: register an autocmd in `group`; a function becomes a `callback`, a string an ex `command`
 local function au(typ, pattern, cmdOrFn)
   if type(cmdOrFn) == 'function' then
     vim.api.nvim_create_autocmd(typ, { pattern = pattern, callback = cmdOrFn, group = group })
@@ -31,6 +33,9 @@ local function au(typ, pattern, cmdOrFn)
   end
 end
 
+-- Open a float with diagnostics for the line under the cursor
+--  Triggered when the cursor idles (`CursorHold`) or when leaving insert mode (`InsertLeave`)
+--  Non-focusable float, cursor-scope only, auto-closes on `BufLeave` / `CursorMoved` / `InsertEnter`
 au({ 'CursorHold', 'InsertLeave' }, nil, function()
   local opts = {
     focusable = false,
@@ -40,10 +45,12 @@ au({ 'CursorHold', 'InsertLeave' }, nil, function()
   vim.diagnostic.open_float(nil, opts)
 end)
 
+-- Hide diagnostic signs while in insert mode (less visual noise while typing)
 au('InsertEnter', nil, function()
   vim.diagnostic.enable(false)
 end)
 
+-- Re-enable diagnostic signs when leaving insert mode
 au('InsertLeave', nil, function()
   vim.diagnostic.enable(true)
 end)
