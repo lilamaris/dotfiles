@@ -1,9 +1,5 @@
-[general]
-import = ["~/.cache/wal/colors-alacritty.toml"]
-
 [terminal.shell]
-program = "/usr/bin/bash"
-args = ["-lc", "$HOME/.local/bin/tmux-launch.sh"]
+program = "/usr/bin/zsh"
 
 [window]
 dynamic_padding = true
