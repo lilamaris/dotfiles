@@ -3,9 +3,9 @@ program = "/usr/bin/zsh"
 
 [window]
 dynamic_padding = true
-padding = { x = 30, y = 15 }
+padding = { x = 30, y = 20 }
 decorations = "Transparent"
-opacity = 0.3
+opacity = 0.6
 
 [mouse]
 hide_when_typing = true
