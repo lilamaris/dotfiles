@@ -1,0 +1,43 @@
+# Environment variables
+
+typeset -U path PATH
+
+path_prepend() {
+  [[ -d "$1" ]] && path=("$1" "$path[@]")
+}
+
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/bin"
+
+unset -f path_prepend
+
+if command -v nvim >/dev/null; then
+  export EDITOR=nvim
+elif command -v vim >/dev/null; then
+  export EDITOR=vim
+else
+  export EDITOR=vi
+fi
+
+# Lazy loading NVM
+export NVM_DIR="$HOME/.nvm"
+nvm() {
+  unset -f nvm
+  [[ -r "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+  [[ -r "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+
+# zsh
+export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+export SAVEHIST=50000
+
+# npm
+export NPM_CONFIG_INIT_AUTHOR_NAME="lilamaris"
+export NPM_CONFIG_INIT_AUTHOR_EMAIL="lilamaris.dev@gmail.com"
+export NPM_CONFIG_INIT_AUTHOR_URL="https://blog.lilamaris.kr"
+export NPM_CONFIG_INIT_LICENSE="MIT"
+
+# starship
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
