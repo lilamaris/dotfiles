@@ -17,3 +17,12 @@ eval_command starship init zsh
 
 unset -f exec_command eval_command;
 
+# Reuse a fresh completion dump; refresh it at most once every 2 hours.
+autoload -Uz compinit
+typeset -r zcompdump="$XDG_CACHE_HOME/zsh/.zcompdump"
+mkdir -p "${zcompdump:h}"
+if [[ -n "$zcompdump"(#qNmh-2) ]]; then
+  compinit -C -d "$zcompdump"
+else
+  compinit -d "$zcompdump"
+fi
