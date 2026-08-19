@@ -26,3 +26,19 @@ if [[ -n "$zcompdump"(#qNmh-2) ]]; then
 else
   compinit -d "$zcompdump"
 fi
+
+typeset -r zsh_plugin_home="/usr/share/zsh/plugins"
+typeset -ra zsh_plugins=(
+  "zsh-autosuggestions/zsh-autosuggestions"
+  "zsh-syntax-highlighting/zsh-syntax-highlighting"
+)
+
+for zsh_plugin in "${zsh_plugins[@]}"; do
+  zsh_plugin_path="${zsh_plugin_home}/${zsh_plugin%/}.zsh"
+
+  if [[ -r "$zsh_plugin_path" ]]; then
+    source "$zsh_plugin_path"
+  fi
+done
+
+unset zsh_plugin zsh_plugin_path
