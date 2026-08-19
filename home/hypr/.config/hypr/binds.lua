@@ -5,44 +5,58 @@
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 
 -- Set "Windows" key as main modifier
-local mainMod    = "SUPER"
+local mainMod = "SUPER"
 
 -- Application hotkey map
-local apps       = { t = "alacritty", w = "firefox" }
+local apps = { t = "alacritty", w = "firefox" }
 
 -- vi-like cursor control key map
 local directions = { left = "h", down = "j", up = "k", right = "l" }
 
 for key, app in pairs(apps) do
-  hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(app),
-    { description = "Open " .. app })
+	hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(app), { description = "Open " .. app })
 end
 
 for direction, key in pairs(directions) do
-  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = direction }),
-    { description = "Move the focus to the " .. direction })
-  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = direction }),
-    { description = "Move the window to the " .. direction })
+	hl.bind(
+		mainMod .. " + " .. key,
+		hl.dsp.focus({ direction = direction }),
+		{ description = "Move the focus to the " .. direction }
+	)
+	hl.bind(
+		mainMod .. " + SHIFT + " .. key,
+		hl.dsp.window.move({ direction = direction }),
+		{ description = "Move the window to the " .. direction }
+	)
 end
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close({ description = "Close the focused window" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),
-  { mouse = true, description = "Drag window with mainMod + LMB" })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(),
-  { mouse = true, description = "Resize window with mainMod + RMB" })
+hl.bind(
+	mainMod .. " + mouse:272",
+	hl.dsp.window.drag(),
+	{ mouse = true, description = "Drag window with mainMod + LMB" }
+)
+hl.bind(
+	mainMod .. " + mouse:273",
+	hl.dsp.window.resize(),
+	{ mouse = true, description = "Resize window with mainMod + RMB" }
+)
 
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"),
-  { description = "Toggle window split direction. (dwindle only)" })
+hl.bind(
+	mainMod .. " + V",
+	hl.dsp.layout("togglesplit"),
+	{ description = "Toggle window split direction. (dwindle only)" }
+)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 
 for i = 1, 10 do
-  local key = i % 10  -- 10 maps to key 0
-  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	local key = i % 10 -- 10 maps to key 0
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- local mainMod = "SUPER" -- Sets "Windows" key as main modifier
