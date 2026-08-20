@@ -20,6 +20,7 @@ unset -f exec_command eval_command;
 # Reuse a fresh completion dump; refresh it at most once every 2 hours.
 autoload -Uz compinit
 typeset -r zsh_compdump_path="$XDG_CACHE_HOME/zsh/.zcompdump"
+mkdir -p "${zsh_compdump_path:h}"
 if [[ -n "$zsh_compdump_path"(#qNmh-2) ]]; then
   compinit -C -d "$zsh_compdump_path"
 else
@@ -45,7 +46,7 @@ unset zsh_plugin zsh_plugin_path
 # NVM lazy loading
 typeset -r nvm_path="$HOME/.nvm"
 _nvm_load() {
-  unfunction nvm node npm npx pi 2>/dev/null
+  unfunction nvm pi 2>/dev/null
 
   [[ -r "$nvm_path/nvm.sh" ]] || {
     print -u2 "nvm: $nvm_path/nvm.sh not found"
