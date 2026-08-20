@@ -41,3 +41,9 @@ for zsh_plugin in "${zsh_plugins[@]}"; do
 done
 
 unset zsh_plugin zsh_plugin_path
+
+autoload add-zsh-hook
+function bottom_prompt {
+  tput cup $(($LINES-1)) 0
+}
+add-zsh-hook precmd bottom_prompt
