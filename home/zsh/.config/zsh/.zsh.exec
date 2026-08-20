@@ -19,12 +19,11 @@ unset -f exec_command eval_command;
 
 # Reuse a fresh completion dump; refresh it at most once every 2 hours.
 autoload -Uz compinit
-typeset -r zcompdump="$XDG_CACHE_HOME/zsh/.zcompdump"
-mkdir -p "${zcompdump:h}"
-if [[ -n "$zcompdump"(#qNmh-2) ]]; then
-  compinit -C -d "$zcompdump"
+typeset -r zsh_compdump_path="$XDG_CACHE_HOME/zsh/.zcompdump"
+if [[ -n "$zsh_compdump_path"(#qNmh-2) ]]; then
+  compinit -C -d "$zsh_compdump_path"
 else
-  compinit -d "$zcompdump"
+  compinit -d "$zsh_compdump_path"
 fi
 
 typeset -r zsh_plugin_home="/usr/share/zsh/plugins"
