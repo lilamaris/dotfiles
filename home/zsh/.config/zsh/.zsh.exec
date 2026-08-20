@@ -42,6 +42,22 @@ done
 
 unset zsh_plugin zsh_plugin_path
 
+# NVM lazy loading
+typeset -r nvm_path="$HOME/.nvm"
+_nvm_load() {
+  unfunction nvm node npm npx pi 2>/dev/null
+
+  [[ -r "$nvm_path/nvm.sh" ]] || {
+    print -u2 "nvm: $nvm_path/nvm.sh not found"
+    return 127
+  }
+
+  source "$nvm_path/nvm.sh"
+}
+
+nvm()  { _nvm_load && nvm "$@"; }
+pi() { _nvm_load && pi "$@"; }
+
 autoload add-zsh-hook
 function bottom_prompt {
   tput cup $(($LINES-1)) 0

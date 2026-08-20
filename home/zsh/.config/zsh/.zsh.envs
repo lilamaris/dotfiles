@@ -19,15 +19,6 @@ else
   export EDITOR=vi
 fi
 
-# Lazy loading NVM
-export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unset -f nvm
-  [[ -r "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-  [[ -r "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
-  nvm "$@"
-}
-
 export LS_COLORS='di=30;46:ln=35:so=32:pi=32:ex=31:bd=32:cd=32:su=31:sg=31:tw=30;46:ow=30;46'
 
 # zsh
