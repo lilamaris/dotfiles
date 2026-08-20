@@ -28,6 +28,8 @@ nvm() {
   nvm "$@"
 }
 
+export LS_COLORS='di=30;46:ln=35:so=32:pi=32:ex=31:bd=32:cd=32:su=31:sg=31:tw=30;46:ow=30;46'
+
 # zsh
 export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
 export SAVEHIST=50000
@@ -40,4 +42,3 @@ export NPM_CONFIG_INIT_LICENSE="MIT"
 
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-
