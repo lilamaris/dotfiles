@@ -32,6 +32,8 @@ end
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close({ description = "Close the focused window" }))
 
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun"), { description = "Open rofi app launcher" })
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(
 	mainMod .. " + mouse:272",
