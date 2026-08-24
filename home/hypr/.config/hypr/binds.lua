@@ -8,7 +8,7 @@
 local mainMod = "SUPER"
 
 -- Application hotkey map
-local apps = { t = "alacritty", w = "firefox" }
+local apps = { t = "alacritty", w = "firefox", o = "obsidian" }
 
 -- vi-like cursor control key map
 local directions = { left = "h", down = "j", up = "k", right = "l" }
