@@ -1,0 +1,17 @@
+export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
+
+path_prepend "$PYENV_ROOT/bin"
+
+# pyenv lazy loading
+_pyenv_load() {
+  unfunction pyenv 2>/dev/null
+  [[ -d "$PYENV_ROOT/bin" ]] || {
+    print -u2 "pyenv: $PYENV_ROOT/bin not found"
+    return 127
+  }
+
+  eval "$(pyenv init - zsh)"
+  eval "$(pyenv virtualenv-init -)"
+}
+
+pyenv() { _pyenv_load && pyenv "$@" }

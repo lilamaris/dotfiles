@@ -1,0 +1,16 @@
+export NVM_ROOT="$XDG_DATA_HOME/.nvm"
+
+# nvm lazy loading
+_nvm_load() {
+  unfunction nvm pi 2>/dev/null
+
+  [[ -r "$NVM_ROOT/nvm.sh" ]] || {
+    print -u2 "nvm: $NVM_ROOT/nvm.sh not found"
+    return 127
+  }
+
+  source "$NVM_ROOT/nvm.sh"
+}
+
+nvm()  { _nvm_load && nvm "$@"; }
+pi() { _nvm_load && pi "$@"; }

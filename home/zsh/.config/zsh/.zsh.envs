@@ -6,10 +6,15 @@ path_prepend() {
   [[ -d "$1" ]] && path=("$1" "$path[@]")
 }
 
-path_prepend "$HOME/.local/bin"
-path_prepend "$HOME/bin"
+exec_command () {
+  command -v "$1" >/dev/null 2>&1 &&
+    "$@"
+}
 
-unset -f path_prepend
+eval_command () {
+  command -v "$1" >/dev/null 2>&1 &&
+    eval "$("$@")"
+}
 
 if command -v nvim >/dev/null; then
   export EDITOR=nvim
@@ -31,5 +36,12 @@ export NPM_CONFIG_INIT_AUTHOR_EMAIL="lilamaris.dev@gmail.com"
 export NPM_CONFIG_INIT_AUTHOR_URL="https://blog.lilamaris.kr"
 export NPM_CONFIG_INIT_LICENSE="MIT"
 
-# starship
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/bin"
+
+# Optional runtime
+source "$ZDOTDIR/opts/.zsh.interactive"
+source "$ZDOTDIR/opts/.zsh.nvm"
+source "$ZDOTDIR/opts/.zsh.pyenv"
+
+unset -f path_prepend exec_command eval_command;

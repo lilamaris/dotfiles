@@ -1,0 +1,18 @@
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
+# stdout connected to tty
+if [[ -t 1 ]]; then
+  exec_command fastfetch
+fi
+
+# stdin connected to tty
+if [[ -t 0 ]]; then
+  eval_command fzf --zsh
+  eval_command starship init zsh
+
+  autoload -Uz add-zsh-hook
+  bottom_prompt() {
+    tput cup $(($LINES-1)) 0
+  }
+  add-zsh-hook precmd bottom_prompt
+fi
