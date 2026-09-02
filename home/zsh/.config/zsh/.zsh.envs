@@ -43,5 +43,6 @@ path_prepend "$HOME/bin"
 source "$ZDOTDIR/opts/.zsh.interactive"
 source "$ZDOTDIR/opts/.zsh.nvm"
 source "$ZDOTDIR/opts/.zsh.pyenv"
+source "$ZDOTDIR/opts/.zsh.pnpm"
 
 unset -f path_prepend exec_command eval_command;
