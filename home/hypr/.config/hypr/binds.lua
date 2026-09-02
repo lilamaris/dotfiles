@@ -34,6 +34,22 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close({ description = "Close the focuse
 
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun"), { description = "Open rofi app launcher" })
 
+---------------------------
+---- SCREEN CAPTURES ------
+---------------------------
+
+-- Screenshot a region with slurp + grim, saved to ~/Pictures/Screenshots
+local screenshotsDir = os.getenv("HOME") .. "/Pictures/Screenshots"
+os.execute('mkdir -p "' .. screenshotsDir .. '"')
+
+hl.bind(
+	mainMod .. " + print",
+	hl.dsp.exec_cmd(
+		'mkdir -p "' .. screenshotsDir .. '" && grim -g "$(slurp)" "' .. screenshotsDir .. '/$(date +%F_%H-%M-%S).png"'
+	),
+	{ description = "Screenshot a region (slurp + grim)" }
+)
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(
 	mainMod .. " + mouse:272",
