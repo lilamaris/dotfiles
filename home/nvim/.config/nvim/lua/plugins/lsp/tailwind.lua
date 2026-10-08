@@ -4,17 +4,15 @@ return {
     opts = {
       servers = {
         tailwindcss = {
-          filetypes_include = { 'astro' },
+          filetypes_include = { 'astro', 'svelte' },
           filetypes_exclude = { 'markdown' },
           settings = {
             tailwindCSS = {
               includeLanguages = { astro = 'html' },
-              -- tailwindcss v4
-              experimental = {
-                configFile = {
-                  ['src/styles/global.css'] = 'src/**',
-                },
-              },
+              -- Let the language server discover each project's Tailwind v3
+              -- config or v4 CSS entry point. A fixed configFile path makes
+              -- other project layouts (for example SvelteKit's src/app.css)
+              -- attach successfully but return no completions.
               classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
               validate = true,
             },
