@@ -28,6 +28,9 @@ export LS_COLORS='di=30;46:ln=35:so=32:pi=32:ex=31:bd=32:cd=32:su=31:sg=31:tw=30
 
 # zsh
 export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+# Keep in-memory history (searched by ctrl+r / zsh-autosuggestions) as large
+# as the history file; without this zsh falls back to its default of 30.
+export HISTSIZE=50000
 export SAVEHIST=50000
 
 # npm
