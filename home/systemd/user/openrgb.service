@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenRGB lighting and local SDK server
+
+[Service]
+ExecStart=/usr/bin/openrgb --server --noautoconnect --server-host 127.0.0.1 --config %h/.config/OpenRGB
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=default.target

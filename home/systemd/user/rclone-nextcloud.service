@@ -1,0 +1,18 @@
+[Unit]
+Description=Rclone Nextcloud WebDAV Mount
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/ping -c 1 nextcloud.tail8e0236.ts.net
+ExecStart=/usr/bin/rclone mount nextcloud-llm: /home/lilamaris/nextcloud \
+  --vfs-cache-mode full \
+  --vfs-cache-max-age 24h \
+  --vfs-cache-max-size 10G \
+  --log-level INFO
+Restart=on-failure
+RestartSec=10
+ExecStop=/usr/bin/fusermount -u /home/lilamaris/nextcloud
+
+[Install]
+WantedBy=default.target
