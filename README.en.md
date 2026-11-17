@@ -13,6 +13,7 @@ I've been maintaining these dotfiles since 2025, and since I'm still learning, e
 | Package | Purpose |
 | --- | --- |
 | `alacritty` | The terminal emulator used day to day |
+| `env.d` | Shared environment variables (sh · bash · zsh) |
 | `zsh` | Default shell (environment variables · options · aliases · completion) |
 | `starship` | Shell prompt |
 | `tmux` | Terminal multiplexer |
@@ -44,5 +45,5 @@ sudo apt install stow
 3. Run `stow`
   - Example:
 ```sh
-stow -t "$HOME" tmux nvim
+stow -t "$HOME" env.d zsh tmux nvim
 ```

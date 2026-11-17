@@ -13,6 +13,7 @@ Arch Linux를 기준으로 작성했습니다. POSIX 호환 운영체제에서�
 | 패키지 | 용도 |
 | --- | --- |
 | `alacritty` | 주로 사용하는 터미널 에뮬레이터 |
+| `env.d` | 셸 공용 환경 변수 (sh · bash · zsh) |
 | `zsh` | 기본 셸 (환경 변수 · 옵션 · alias · completion) |
 | `starship` | 셸 프롬프트 |
 | `tmux` | 터미널 멀티플렉서 |
@@ -44,5 +45,5 @@ sudo apt install stow
 3. `stow` 실행
   - 예시:
 ```sh
-stow -t "$HOME" tmux nvim
+stow -t "$HOME" env.d zsh tmux nvim
 ```

@@ -1,3 +1,1 @@
-export PNPM_HOME="/home/lilamaris/.local/share/pnpm"
-
 path_prepend "$PNPM_HOME/bin"
