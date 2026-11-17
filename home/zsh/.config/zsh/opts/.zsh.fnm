@@ -1,0 +1,1 @@
+eval_command fnm env --use-on-cd --shell zsh
