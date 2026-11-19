@@ -39,7 +39,7 @@ export NPM_CONFIG_INIT_AUTHOR_EMAIL="lilamaris.dev@gmail.com"
 export NPM_CONFIG_INIT_AUTHOR_URL="https://blog.lilamaris.kr"
 export NPM_CONFIG_INIT_LICENSE="MIT"
 
-path_prepend "$HOME/.local/bin"
+path_prepend "$XDG_BIN_HOME"
 path_prepend "$HOME/bin"
 
 # Optional runtime
@@ -47,5 +47,6 @@ source "$ZDOTDIR/opts/.zsh.interactive"
 source "$ZDOTDIR/opts/.zsh.fnm"
 source "$ZDOTDIR/opts/.zsh.pi"
 source "$ZDOTDIR/opts/.zsh.pnpm"
+source "$ZDOTDIR/opts/.zsh.uv"
 
 unset -f path_prepend exec_command eval_command;
