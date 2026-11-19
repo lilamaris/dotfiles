@@ -1,4 +1,5 @@
 export PI_HOME="$XDG_DATA_HOME/pi/agent"
+
 export PI_CODING_AGENT_DIR="$PI_HOME"
 export PI_LENS_HOME="$XDG_DATA_HOME/pi-lens"
 export PILENS_DATA_DIR="$XDG_CACHE_HOME/pi-lens"
