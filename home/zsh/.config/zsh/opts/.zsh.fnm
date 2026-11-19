@@ -1,1 +1,2 @@
+path_prepend "$FNM_HOME"
 eval_command fnm env --use-on-cd --shell zsh
